@@ -108,6 +108,13 @@ GET /collections/{collection_name}
 
 ```bash
 curl -X POST "http://127.0.0.1:8000/collections/users" \
+  -H "X-Secret: xxxx" \
+  -H "Content-Type: application/json" \
+  -d '{"username":"ritesh","role":"admin"}'
+```
+```bash
+curl -X POST "https://zap-store-production.up.railway.app/collections/users" \
+  -H "X-Secret: xxxx" \
   -H "Content-Type: application/json" \
   -d '{"username":"ritesh","role":"admin"}'
 ```
@@ -115,7 +122,10 @@ curl -X POST "http://127.0.0.1:8000/collections/users" \
 **Fetch all users**
 
 ```bash
-curl "http://127.0.0.1:8000/collections/users"
+curl "http://127.0.0.1:8000/collections/users" -H "X-Secret: xxxx"
+```
+```bash
+curl "https://zap-store-production.up.railway.app/collections/users" -H "X-Secret: xxxx"
 ```
 
 ---
