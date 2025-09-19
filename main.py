@@ -22,7 +22,7 @@ app.add_middleware(CORSMiddleware, allow_origins=origins, allow_credentials=True
 
 # POST endpoint: create new document in given collection
 @app.post("/items/{collection_name}")
-async def create_item(collection_name: str, item: Dict[str, Any]):
+async def create_item(collection_name: str, item: dict):
     try:
         doc_ref = db.collection(collection_name).add(item)  # auto-ID
         return {"message": "Document created successfully", "id": doc_ref[1].id}
