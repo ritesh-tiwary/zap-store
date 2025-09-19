@@ -21,7 +21,7 @@ app.add_middleware(CORSMiddleware, allow_origins=origins, allow_credentials=True
 
 
 # POST endpoint: create new document in given collection
-@app.post("/items/{collection_name}")
+@app.post("/collections/{collection_name}")
 async def create_item(collection_name: str, item: dict):
     try:
         doc_ref = db.collection(collection_name).add(item)  # auto-ID
@@ -30,7 +30,7 @@ async def create_item(collection_name: str, item: dict):
         raise HTTPException(status_code=500, detail=str(e))
 
 # GET endpoint: fetch all documents from given collection
-@app.get("/items/{collection_name}")
+@app.get("/collections/{collection_name}")
 async def get_items(collection_name: str):
     try:
         docs = db.collection(collection_name).stream()
